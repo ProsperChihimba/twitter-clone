@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { Entypo, Ionicons, MaterialCommunityIcons, Feather } from '@expo/vector-icons';
+import { Entypo, Ionicons, MaterialCommunityIcons, Feather, AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -19,6 +19,7 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ProfilePicture from '../components/ProfilePicture';
+import NewTweetScreen from '../screens/NewTweetScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -44,6 +45,7 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
+      <Stack.Screen name="NewTweet" component={NewTweetScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
@@ -80,7 +82,7 @@ function BottomTabNavigator() {
             </Pressable>
           ),
           headerRightContainerStyle: {
-            marginRight: 10,
+            marginRight: 15,
           },
           headerTitle: () => (
             <Ionicons name='logo-twitter' size={25} color={Colors.light.tint} />
@@ -91,7 +93,7 @@ function BottomTabNavigator() {
           ),
           headerLeftContainerStyle: {
             marginLeft: 15,
-          }
+          },
         })}
       />
       <BottomTab.Screen
